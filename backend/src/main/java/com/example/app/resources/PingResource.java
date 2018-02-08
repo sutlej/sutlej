@@ -15,6 +15,7 @@ public class PingResource {
     public ResponseEntity<Map<String, String>> ping() {
         Map<String, String> map = new HashMap<>();
         map.put("ping", "pong");
+        map.put("pang", "pong");
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }
