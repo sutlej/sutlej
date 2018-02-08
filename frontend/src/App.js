@@ -14,8 +14,11 @@ class App extends Component {
     document.title = "Sutlej";
 
     var self = this;
-    var dataUrl = 'http://localhost:8080/api/ping';
-    fetch(dataUrl)
+    var dataUrl = 'http://localhost:8080/api/put';
+    fetch(dataUrl, {
+      method: 'POST',
+      body: 'fileeeeeeeeeeeeeeeeeeePathhhhhhhhhhhhhhhhhhhh'
+    })
       .then(function (response) {
         if (response.status >= 400){
           throw new Error("Bad response from server");

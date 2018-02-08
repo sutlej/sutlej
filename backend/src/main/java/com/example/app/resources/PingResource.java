@@ -5,8 +5,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PingResource {
@@ -16,6 +15,14 @@ public class PingResource {
         Map<String, String> map = new HashMap<>();
         map.put("ping", "pong");
         map.put("pang", "pong");
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+
+    @RequestMapping(path = "/put", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, String>> put(@RequestBody String filePath) {
+        Map<String, String> map = new HashMap<>();
+        map.put("filePath", filePath);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }
