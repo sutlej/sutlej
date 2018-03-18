@@ -17,7 +17,7 @@ class App extends Component {
     var dataUrl = 'http://localhost:8080/api/put';
     fetch(dataUrl, {
       method: 'POST',
-      body: 'fileeeeeeeeeeeeeeeeeeePathhhhhhhhhhhhhhhhhhhh'
+      body: 'D:\\github_repos\\sutlej2\\files'
     })
       .then(function (response) {
         if (response.status >= 400){
