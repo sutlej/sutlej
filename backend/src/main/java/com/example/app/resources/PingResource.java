@@ -30,9 +30,16 @@ public class PingResource {
         return filePath.substring(0, filePath.length() - partToRemove.length()) + partToAdd;
     }
 
+    /**
+     * This method takes a path as an input in which the compressed files
+     * will be present and we will detect them.
+     *
+     * @param folderPath path of folder that contains data files
+     * @return response
+     */
     @RequestMapping(path = "/put", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, String>> put(@RequestBody String filePath) {
-        File folder = new File(filePath);
+    public ResponseEntity<Map<String, String>> put(@RequestBody String folderPath) {
+        File folder = new File(folderPath);
         Map<String, String> map = new HashMap<>();
 
         Map<String, String> extensionsToBeExtracted = new HashMap<>();

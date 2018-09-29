@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import logo from './Sutlej search logo.png';
+import logo from './sutlej.png';
 import './App.css';
 
+import SearchBar from 'react-search-bar'
+
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       dataValue: ""
@@ -13,14 +15,14 @@ class App extends Component {
   componentDidMount() {
     document.title = "Sutlej";
 
-    var self = this;
-    var dataUrl = 'http://localhost:8080/api/put';
+    let self = this;
+    let dataUrl = 'http://localhost:8080/api/put';
     fetch(dataUrl, {
       method: 'POST',
-      body: 'D:\\github_repos\\sutlej2\\files'
+      body: '/home/manparvesh/Desktop/github_repos/sutlej/files'
     })
       .then(function (response) {
-        if (response.status >= 400){
+        if (response.status >= 400) {
           throw new Error("Bad response from server");
         }
         return response.json();
@@ -31,7 +33,7 @@ class App extends Component {
   }
 
   render() {
-    const petList = Object.entries(this.state.dataValue).map(([key,value])=>{
+    const petList = Object.entries(this.state.dataValue).map(([key, value]) => {
       return (
         <div>{key} : {value.toString()}</div>
       );
@@ -46,6 +48,18 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <div>{petList}</div>
+        <SearchBar
+          onChange={() => console.log('onChange')}
+          onSearch={() => console.log('onRequestSearch')}
+          renderSearchButton={true}
+          renderClearButton={true}
+          suggestions={["abcd", "asdadas", "sfdsa", "wewew"]}
+          onClear={() => {
+            console.log('onClear');
+            this.state.value = "";
+          }
+          }
+        />
       </div>
     );
   }
